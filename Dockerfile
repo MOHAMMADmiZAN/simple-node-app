@@ -4,9 +4,9 @@ FROM node:18-alpine AS builder
 # Set working directory
 WORKDIR /app
 
-# Copy package.json and install dependencies using Yarn
+# Copy package.json and install dependencies using Yarn with frozen lockfile
 COPY backend/package.json backend/yarn.lock ./
-RUN yarn install --production
+RUN yarn install --frozen-lockfile --production
 
 # Copy application source code
 COPY backend/src ./src
